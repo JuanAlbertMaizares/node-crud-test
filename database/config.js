@@ -9,7 +9,7 @@ const dbConnection = async() => {
             //useFindAndModify:false
         }
         );
-        console.log('conectado');
+        console.log('BBDD conectada');
     } catch (error) {
         throw new Error('Error en la conexión a la bd');
     }
