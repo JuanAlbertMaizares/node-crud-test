@@ -38,7 +38,7 @@ const usuariosPost = async(req, res = response) => {
 const usuariosPut = async(req, res = response) => {
 
     const { id } = req.params;
-    const { password, google, correo, ...resto } = req.body;
+    const { _id, password, google, correo, ...resto } = req.body;
 
     // validar contra la bd
     if (password) {
@@ -50,7 +50,7 @@ const usuariosPut = async(req, res = response) => {
 
     res.json({
         msg: 'put API - usuariosPut',
-        id
+        usuario
     });
 }
 
