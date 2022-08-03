@@ -10,9 +10,9 @@ Esta cuenta es una cuenta secundaria de Juan Alberto Maizares
 * Mongo Atlas Cloud
 
 * DEPLOY en HEROKU
-URL API
+* URL API
 https://rest-test-deploy.herokuapp.com/api/usuarios
 
-URL, solo muestra un index con texto "acceso denegado" 
+* URL. Solo muestra un index con texto "acceso denegado".
 https://rest-test-deploy.herokuapp.com
 
