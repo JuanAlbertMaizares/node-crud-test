@@ -8,3 +8,11 @@ Esta cuenta es una cuenta secundaria de Juan Alberto Maizares
 * NODE JS
 * Express JS
 * Mongo Atlas Cloud
+
+* DEPLOY en HEROKU
+URL API
+https://rest-test-deploy.herokuapp.com/api/usuarios
+
+URL, solo muestra un index con texto "acceso denegado" 
+https://rest-test-deploy.herokuapp.com
+
