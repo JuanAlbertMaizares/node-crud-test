@@ -10,7 +10,7 @@ Esta cuenta es una cuenta secundaria de Juan Alberto Maizares
 * Mongo Atlas Cloud
 
 * DEPLOY en HEROKU
-* URL API
+* URL API (con POSTMAN se accede a los endpoints, GET, POST, PUT, PATCH, DELETE, que figuran en routes/usuarios.js)
 https://rest-test-deploy.herokuapp.com/api/usuarios
 
 * URL. Solo muestra un index con texto "acceso denegado".
