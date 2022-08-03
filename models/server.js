@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const {dbConnection} = require('../database/config');
+
+
 class Server {
 
     constructor() {
@@ -11,7 +13,6 @@ class Server {
         this.conectarDB();
         // Middlewares
         this.middlewares();
-
         // Rutas de mi aplicación
         this.routes();
     }
@@ -21,7 +22,6 @@ class Server {
     }
 
     middlewares() {
-
         // CORS
         this.app.use( cors() );
 
@@ -42,10 +42,7 @@ class Server {
             console.log('Servidor corriendo en puerto', this.port );
         });
     }
-
 }
-
-
 
 
 module.exports = Server;
