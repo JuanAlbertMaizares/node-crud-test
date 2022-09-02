@@ -55,10 +55,12 @@ const usuariosPatch = (req, res = response) => {
 // controlador
 const usuariosDelete = async (req, res = response) => {
     const { id } = req.params;
+    const uid = req.uid;
     const usuarioDelete = await Usuario.findByIdAndUpdate(id, { estado: false });
     const usuario = await Usuario.findById(id);
+    const usuarioAutenticado = req.usuario;
     //const user = await Usuario.findById(id);
-    res.json({ usuario });
+    res.json({ usuario, usuarioAutenticado  });
 }
 
 
