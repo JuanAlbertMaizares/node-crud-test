@@ -3,11 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso denegado</title>
+    <title>Google Sign-In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
     <h1>API - Gestion De Usuarios - Autenticación con JWT</h1>
+    <h3>Google Sign-In</h3>
     
+    <div id="g_id_onload"
+         data-client_id="176762539265-irv1hs1hppfb2c9vosmfjgsvjfl1i6cs.apps.googleusercontent.com"
+         data-auto_prompt="false"
+         data-callback="handleCredentialResponse"
+    >
+    </div>
+    <!-- configuracon de la ventana, el boton-->
+    <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+    </div>
+    <!-- script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- manejador de la respuesta -->
+    <script>
+        function handleCredentialResponse(response) {
+           // Google Token : id_token
+           const body = {id_token: response.credential};
+           // fetch recibe dos parametros url y objeto con configuraciones
+           fetch('http://localhost:8080/api/auth/google', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+           })
+                .then(resp => resp.json())
+                .then(resp => {
+                    console.log(resp)
+                })
+                .catch(console.warn);
+
+
+ 
+           
+        }
+    </script>
 </body>
 </html>
