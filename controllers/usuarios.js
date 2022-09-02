@@ -1,26 +1,18 @@
 const { response, request } = require('express');
-const bcryptjs = require('bcryptjs');
+const bcryptjs = require('bcryptjs'); // libreria para encriptar datos
 
 const Usuario = require('../models/usuario');
 
+//el controlador usuarioGet
 const usuariosGet = async(req = request, res = response) => {
 
-    //const { q, nombre = 'No name', apikey, page = 1, limit } = req.query;
-
-    // res.json({
-    //     msg: 'get API - controlador',
-    //     q,
-    //     nombre,
-    //     apikey,
-    //     page, 
-    //     limit
-    // });
     const {limite = 5, desde = 0} = req.query;
     const usuarios = await Usuario.find().skip(Number(desde)).limit(Number(limite));
     const total = await Usuario.countDocuments();
+    // retorna datos como archivo json.
     res.json({total, usuarios});
 }
-
+// otro controlador
 const usuariosPost = async(req, res = response) => {
     
 
@@ -38,7 +30,7 @@ const usuariosPost = async(req, res = response) => {
         usuario
     });
 }
-
+// controlador
 const usuariosPut = async(req, res = response) => {
 
     const { id } = req.params;
@@ -54,20 +46,23 @@ const usuariosPut = async(req, res = response) => {
 
     res.json(usuario);
 }
-
+// controlador
 const usuariosPatch = (req, res = response) => {
     res.json({
         msg: 'patch API - usuariosPatch'
     });
 }
-
+// controlador
 const usuariosDelete = async (req, res = response) => {
     const { id } = req.params;
-    const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+    const usuarioDelete = await Usuario.findByIdAndUpdate(id, { estado: false });
+    const usuario = await Usuario.findById(id);
     //const user = await Usuario.findById(id);
     res.json({ usuario });
 }
 
+
+// exportando controladores
 module.exports = {
     usuariosGet,
     usuariosPost,

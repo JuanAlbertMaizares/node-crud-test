@@ -34,7 +34,10 @@ const UsuarioSchema = Schema({
 });
 // zona de reescritura de metodos
 UsuarioSchema.methods.toJSON = function() {
-    const { __v, password, ...usuario } = this.toObject();
+    // esta linea mod lo que se retorna.
+    const { __v, password, _id, ...usuario } = this.toObject();
+    //esta linea muestra una nueva propiedad basada en otra.
+    usuario.uid = _id;
     return usuario;
 }
 module.exports = model('Usuario', UsuarioSchema);
