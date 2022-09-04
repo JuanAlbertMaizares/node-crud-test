@@ -43,12 +43,15 @@ const login = async(req, res = response) => {
 
 }
 const googleSignIn = async(req, res = response) => {
+    // recibe el token DE GOOGLE
     const {id_token} = req.body;
     try {
+        // decodifica el token de google y saca los datos de ahi.
         const {nombre, img, correo} = await googleVerify(id_token);
+        // con el correo buscamos un usuario de la BD con ese correo.
         let usuario = await Usuario.findOne({correo});
+        // si el usuario ese, no existe, creamos uno con los datos extraidos del token de google.
         if (!usuario) {
-            //sino exste, lo creamos
             const data = {
                 nombre,
                 correo, 
@@ -61,7 +64,6 @@ const googleSignIn = async(req, res = response) => {
             await usuario.save();
         }
         // si el estado del usuario en bd es falso
-        let usuario2 = await Usuario.findOne({correo});
         if (!usuario.estado) {
             return res.status(401).json({
                 msg: 'hable con el admin, el usuario esta bloqueado'
