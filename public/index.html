@@ -43,7 +43,7 @@
            // Google Token : id_token
            const body = {id_token: response.credential};
            // fetch recibe dos parametros url y objeto con configuraciones
-           fetch('http://localhost:8080/api/auth/google', {
+           fetch('https://rest-test-deploy.herokuapp.com/api/auth/google', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
