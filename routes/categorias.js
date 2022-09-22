@@ -3,8 +3,10 @@ const { check } = require('express-validator');
 const { crearCategoria, 
     obtenerCategorias, 
     obtenerCategoria, 
-    actualizarCategoria } = require('../controllers/categorias');
-const { existeCategoriaPorId } = require('../helpers/db-validators');
+    actualizarCategoria, 
+    borrarCategoria} = require('../controllers/categorias');
+const { existeCategoriaPorId, existeUsuarioPorId } = require('../helpers/db-validators');
+const { esAdminRole } = require('../middlewares');
 
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
@@ -31,9 +33,14 @@ router.put('/:id', [
     check('id').custom(existeCategoriaPorId),
     validarCampos
 ], actualizarCategoria);
-router.delete('/:id', (req, res)=>{
-    res.json('delete');
-});
+
+router.delete('/:id', [
+    validarJWT,
+    esAdminRole,
+    check('id', 'No es un id de Mongo válido').isMongoId(),
+    check('id').custom(existeCategoriaPorId),
+    validarCampos,
+], borrarCategoria);
 
 
 
