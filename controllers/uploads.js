@@ -145,6 +145,9 @@ const mostrarImagen = async(req, res = response) => {
         if (fs.existsSync(pathImagen)) {
             return res.sendFile(pathImagen);
         }
+        else {
+            return res.json({url_img: modelo.img})
+        }
     }
     const pathImagen = path.join( __dirname, '../assets/no-image.jpg');
     res.sendFile(pathImagen);
