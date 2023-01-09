@@ -4,6 +4,8 @@ const bcryptjs = require('bcryptjs'); // libreria para encriptar datos
 const { generarJWT } = require('../helpers/generar-jwt');
 const { googleVerify } = require('../helpers/google-verify');
 
+// mtd - Login para iniciar logeo en nuestro sitio
+
 const login = async(req, res = response) => {
     const {correo, password} = req.body;
 
@@ -28,7 +30,8 @@ const login = async(req, res = response) => {
                 msg:'Usuario / Password no son correctos - password erroneo'
             });
         }
-        // generar el token jwt.
+        // con el usuario existente y su id gneramos un token para esta session actual.
+        // generarJWT retorna un token o un error.
         const token = await generarJWT(usuario.id);
         res.json({
             usuario,
@@ -42,6 +45,9 @@ const login = async(req, res = response) => {
     }
 
 }
+
+// mtd -  Logeo hacia Google para obtener token y datos desde allí.
+
 const googleSignIn = async(req, res = response) => {
     // recibe el token DE GOOGLE
     const {id_token} = req.body;
@@ -63,13 +69,13 @@ const googleSignIn = async(req, res = response) => {
             usuario = new Usuario(data); 
             await usuario.save();
         }
-        // si el estado del usuario en bd es falso
+        // existe pero el estado del usuario en bd es falso
         if (!usuario.estado) {
             return res.status(401).json({
                 msg: 'hable con el admin, el usuario esta bloqueado'
             });
         }
-        // generamos el JWT
+        // con el usuario existente y su id gneramos un token para esta session actual.
         const token = await generarJWT(usuario.id);
         res.json({
             usuario,

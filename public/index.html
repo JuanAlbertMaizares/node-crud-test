@@ -17,8 +17,8 @@
              data-client_id="176762539265-irv1hs1hppfb2c9vosmfjgsvjfl1i6cs.apps.googleusercontent.com"
              data-auto_prompt="false"
              data-callback="handleCredentialResponse"
-        >
-        </div>
+        >       
+        </div>  
         <!-- configuracon de la ventana, el boton-->
         <div class="g_id_signin"
             data-type="standard"
@@ -37,14 +37,17 @@
 
     <!-- script -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
     <!-- manejador de la respuesta -->
     <script>
         function handleCredentialResponse(response) {
            // Google Token : id_token
            const body = {id_token: response.credential};
            // fetch recibe dos parametros url y objeto con configuraciones
-           fetch('https://rest-test-deploy.herokuapp.com/api/auth/google', {
-                method: 'POST',
+           // se envia a 
+           //fetch('https://rest-test-deploy.herokuapp.com/api/auth/google', {
+           fetch('https://node-crud-test-production.up.railway.app/api/auth/google', {
+           method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },

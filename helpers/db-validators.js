@@ -2,6 +2,8 @@ const {Categoria, Usuario, Producto} = require('../models');
 const Role = require('../models/role')
 const mongoose = require("mongoose");
 
+// SET de funsiones validadores.
+
 const esRoleValido = async(rol='')=>{
     const existeRol = await Role.findOne({rol});
     if (!existeRol){

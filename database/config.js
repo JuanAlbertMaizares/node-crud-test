@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-
+// simple try catch con intento al metodo connect de mongoose
+// la f debe exportarse.
 const dbConnection = async() => {
     try {
         await mongoose.connect(process.env.MONGODB_CNN, {

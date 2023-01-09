@@ -1,8 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-const {dbConnection} = require('../database/config');
-//
-const fileUpload = require('express-fileupload');
+// importaciones del ...
+const express = require('express');                     //modulo framework 
+const cors = require('cors');                           //modulo cors para habilitar el origen cruzado
+const {dbConnection} = require('../database/config');   //funcion que se ejecuta la conexion de fondo a bbdd
+const fileUpload = require('express-fileupload');       //modulo para cargar archivos
 
 
 class Server {

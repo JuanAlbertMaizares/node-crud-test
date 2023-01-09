@@ -1,5 +1,5 @@
 const path = require('path');
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid'); //crea un identidicador random en cada llamado.
 
 const subirArchivo = (files, extensionesValidas = ['png', 'jpg', 'jpeg', 'gif'], carpeta = '') => {
     // creamos una promesa para resolver aqui por reject o resolve y que lo capture el scope superior.

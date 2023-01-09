@@ -4,7 +4,7 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 
 const { validarJWT, validarCampos, esAdminRole } = require('../middlewares');
-
+// f's controladores correspondientes
 const { crearProducto,
         obtenerProductos,
         obtenerProducto,
@@ -12,7 +12,7 @@ const { crearProducto,
         borrarProducto } = require('../controllers/productos');
 
 const { existeCategoriaPorId, existeProductoPorId } = require('../helpers/db-validators');
-
+// nte . Router.
 const router = Router();
 
 /**

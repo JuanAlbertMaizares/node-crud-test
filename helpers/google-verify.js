@@ -3,7 +3,7 @@ const {OAuth2Client} = require('google-auth-library');
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-
+// F p/ obtener la alidacion y datos de un token hacia google.
 async function googleVerify(token='') {
   const ticket = await client.verifyIdToken({
       idToken: token,

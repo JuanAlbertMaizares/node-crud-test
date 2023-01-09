@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const usuario = require("../models/usuario");
 const Usuario = require('../models/usuario');
 
+// nte - F p/ validar el token 
+
 const validarJWT = async(req= request, res = response, next) => {
     const token = req.header('x-token');
     if (!token) {
